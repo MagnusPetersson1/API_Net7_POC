@@ -17,11 +17,13 @@ az group create -l WestEurope -n <resource group name>
 # ============= Deploy the app sevice plan =============
 
 az deployment group create --resource-group <resource group> --template-file Deployment/Scaffolding/AppService.bicep --parameters Deployment/Scaffolding/AppService-DEV.parameter.json
+
+# ============ Deploy the API App ================
 az deployment group create --resource-group <resource group> --template-file Deployment/API/APIApp.bicep --parameters Deployment/API/APIApp-DEV.parameter.json
 
 
 #  ============= Deploy the code =============
-az webapp deployment list-publishing-credentials --name mpGameAPIapp --resource-group <resource-group-name> --subscription <subscription id>
+az webapp deployment list-publishing-credentials --name <API app name> --resource-group <resource-group-name> --subscription <subscription id>
 
 # ============= deploy/add/expose API in api manager  =============
 
